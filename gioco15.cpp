@@ -45,11 +45,11 @@ void medio() //inizio della difficoltà media
 	int moneteRaccolteP, moneteRaccolteM;
 	srand(time(NULL));
 	
-	int probVitt;
+	int probSconf;
 	
-	probVitt = rand()%100 + 1;
+	probSconf = rand()%100 + 1;
 	
-	if(probVitt >= 70)
+	if(probSconf >= 70)
 	{
 		while(monete > 0)
 		{
@@ -68,12 +68,20 @@ void medio() //inizio della difficoltà media
 			switch(moneteRaccolteP)
 			{
 				case 1:
+					moneteRaccolteM = 3;
+					monete -= moneteRaccolteM; 
+					break;
 					
+				case 2:
+					moneteRaccolteM = 2;
+					monete -= moneteRaccolteM;
+					break;
+				
+				case 3:
+					moneteRaccolteM = 1;
+					monete -= moneteRaccolteM;
+					break;
 			}
-			
-			
-			
-			
 			
 		
 			cout << "Il computer ha preso " << moneteRaccolteM << " monete. Rimangono " << monete << " monete" << endl;
@@ -89,7 +97,7 @@ void medio() //inizio della difficoltà media
 		}	
 	}
 
-
+}
 
 int main()
 {
@@ -105,7 +113,7 @@ int main()
 			facile();
 			break;
 		case 'm':
-//			medio();
+			medio();
 			break;
 		case 'd':
 //			difficile();

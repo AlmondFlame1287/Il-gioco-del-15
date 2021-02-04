@@ -10,13 +10,13 @@ void facile() //inizio della difficoltà facile
 	int moneteRaccolteP, moneteRaccolteM;
 	srand(time(NULL));
 
-	while(monete > 0)
+	while(monete > 0) //finchè il numero di monete non raggiunge lo 0
 	{
 
 		cout << "Quante monete vuoi raccogliere? (da 1 a 3)";
 		cin >> moneteRaccolteP;
 	
-		while(moneteRaccolteP <= 0 || moneteRaccolteP >= 4)
+		while(moneteRaccolteP <= 0 || moneteRaccolteP >= 4) // controllo dell'input
 		{
 			cout << "Ti ho detto di scegliere tra 1 e 3!";
 			facile();

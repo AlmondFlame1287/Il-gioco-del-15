@@ -5,7 +5,7 @@
 using namespace std;
 void facile()
 {
-	//possibilit‡ di vincita del giocatore praticamente pari a 100
+	//possibilit√† di vincita del giocatore praticamente pari a 100
 	int monete = 11;
 	int moneteRaccolteP, moneteRaccolteM;
 	
@@ -54,7 +54,7 @@ int main()
 //			difficile();
 			break;
 		default:
-			cout << "Inserisci una difficolt‡ valida!";
+			cout << "Inserisci una difficolt√† valida!";
 			main();
 			break;	
 	}

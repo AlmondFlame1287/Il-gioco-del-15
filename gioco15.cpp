@@ -81,113 +81,114 @@ void medio() //inizio della difficoltà media
 	
 	probInizio = rand()%10 + 1; //numero randomico da 1 a 10
 	probSconf = rand()%100 + 1; //numero randomico da 1 a 100
-	
-	if(probInizio % 2 == 0) //se il resto di probInizio == 0
+
+	while(monete > 0)
 	{
-		if(probSconf >= 60) //se probSconfitta è maggiore o uguale a 0
+		if(probInizio % 2 == 0) //se il resto di probInizio == 0
 		{
-		
-			do 
+			if(probSconf >= 60) //se probSconfitta è maggiore o uguale a 0
 			{
-				cout << "Quante monete vuoi raccogliere? (da 1 a 3)";
-				cin >> moneteRaccolteP;
-				
-				if (moneteRaccolteP <= 0 || moneteRaccolteP >= 4) 
-				{
-					cout << "Ti ho detto di scegliere tra 1 e 3!\n";
-				}
-			} 
-			while(moneteRaccolteP <= 0 || moneteRaccolteP >= 4);
 			
-			monete -= moneteRaccolteP;
-		
-			switch(moneteRaccolteP) //scelta delle monete da sottrarre per vincere
-			{
-				case 1:
-					moneteRaccolteM = 3;
-					monete -= moneteRaccolteM; 
-					break;
-				
-				case 2:
-					moneteRaccolteM = 2;
-					monete -= moneteRaccolteM;
-					break;
-			
-				case 3:
-					moneteRaccolteM = 1;
-					monete -= moneteRaccolteM;
-					break;
-			}
-		
-	
-			cout << "Il computer ha preso " << moneteRaccolteM << " monete. Rimangono " << monete << " monete" << endl;  //restituisci il valore delle monete prese dal pc e le monete rimanenti
-	
-			if(monete < 0) //nel caso in cui le monete sono minore di 0 (dato che un umano non andrebbe a -monete), diamo per scontato che la macchina prende l'ultima moneta e quindi perde.
-			{
-				cout << "Il computer ha preso l'ultima moneta, e dunque hai vinto!" << endl;
-			}
-			else if(monete == 0) //altrimenti diamo per scontato che l'utente abbia preso l'ultima moneta e che dunque abbia perso
-			{
-				cout << "Hai preso l'ultima moneta. Hai perso!" << endl;
-			}
-		}
-		
-		else //se invece probSconf è minore di 60
-		{
-			while(monete > 0)
-			{
 				do 
 				{
 					cout << "Quante monete vuoi raccogliere? (da 1 a 3)";
 					cin >> moneteRaccolteP;
+					
 					if (moneteRaccolteP <= 0 || moneteRaccolteP >= 4) 
 					{
 						cout << "Ti ho detto di scegliere tra 1 e 3!\n";
 					}
-				}
-				
+				} 
 				while(moneteRaccolteP <= 0 || moneteRaccolteP >= 4);
-			
+				
 				monete -= moneteRaccolteP;
-				moneteRaccolteM = rand()%3 + 1;
-				monete -= moneteRaccolteM;
-				cout << "Il computer ha preso " << moneteRaccolteM << " monete. Rimangono " << monete << " monete" << endl;
 			
-				if(monete < 0)
+				switch(moneteRaccolteP) //scelta delle monete da sottrarre per vincere
+				{
+					case 1:
+						moneteRaccolteM = 3;
+						monete -= moneteRaccolteM; 
+						break;
+					
+					case 2:
+						moneteRaccolteM = 2;
+						monete -= moneteRaccolteM;
+						break;
+				
+					case 3:
+						moneteRaccolteM = 1;
+						monete -= moneteRaccolteM;
+						break;
+				}
+			
+		
+				cout << "Il computer ha preso " << moneteRaccolteM << " monete. Rimangono " << monete << " monete" << endl;  //restituisci il valore delle monete prese dal pc e le monete rimanenti
+		
+				if(monete < 0) //nel caso in cui le monete sono minore di 0 (dato che un umano non andrebbe a -monete), diamo per scontato che la macchina prende l'ultima moneta e quindi perde.
 				{
 					cout << "Il computer ha preso l'ultima moneta, e dunque hai vinto!" << endl;
 				}
-				else if(monete == 0)
+				else if(monete == 0) //altrimenti diamo per scontato che l'utente abbia preso l'ultima moneta e che dunque abbia perso
 				{
 					cout << "Hai preso l'ultima moneta. Hai perso!" << endl;
 				}
 			}
+			
+			else //se invece probSconf è minore di 60
+			{
+			
+					do 
+					{
+						cout << "Quante monete vuoi raccogliere? (da 1 a 3)";
+						cin >> moneteRaccolteP;
+						if (moneteRaccolteP <= 0 || moneteRaccolteP >= 4) 
+						{
+							cout << "Ti ho detto di scegliere tra 1 e 3!\n";
+						}
+					}
+					
+					while(moneteRaccolteP <= 0 || moneteRaccolteP >= 4);
+				
+					monete -= moneteRaccolteP;
+					moneteRaccolteM = rand()%3 + 1;
+					monete -= moneteRaccolteM;
+					cout << "Il computer ha preso " << moneteRaccolteM << " monete. Rimangono " << monete << " monete" << endl;
+				
+					if(monete < 0)
+					{
+						cout << "Il computer ha preso l'ultima moneta, e dunque hai vinto!" << endl;
+					}
+					else if(monete == 0)
+					{
+						cout << "Hai preso l'ultima moneta. Hai perso!" << endl;
+					}
+				
+			}
 		}
-	}
-	
-		
-		
-	else //se invece probInizio non è pari
-	{
-		moneteRaccolteM = rand()%3 + 1;
-		monete -= moneteRaccolteM;
-		
-		cout << "Il computere ha preso " << moneteRaccolteM << " monete. Rimagono " << monete << " monete" << endl;
-		cout << "Quante monete vuoi raccogliere? (1 a 3) ";
-		cin >> moneteRaccolteP;
-		
-		monete -= moneteRaccolteP;
-		
-		if(monete < 0)
-		{
-			cout << "Il computer ha preso l'ultima moneta, e dunque hai vinto!" << endl;
-		}
-		else if(monete == 0)
-		{
-			cout << "Hai preso l'ultima moneta. Hai perso!" << endl;
-		}
-	}
 
+		
+		
+		else //se invece probInizio non è pari
+		{
+			moneteRaccolteM = rand()%3 + 1;
+			monete -= moneteRaccolteM;
+			
+			cout << "Il computere ha preso " << moneteRaccolteM << " monete. Rimagono " << monete << " monete" << endl;
+			cout << "Quante monete vuoi raccogliere? (1 a 3) ";
+			cin >> moneteRaccolteP;
+			
+			monete -= moneteRaccolteP;
+			
+			if(monete < 0)
+			{
+				cout << "Il computer ha preso l'ultima moneta, e dunque hai vinto!" << endl;
+			}
+			else if(monete == 0)
+			{
+				cout << "Hai preso l'ultima moneta. Hai perso!" << endl;
+			}
+		}
+	}
 }
 
 
@@ -220,11 +221,11 @@ void difficile() //inizio della difficoltà difficile
 				} 
 				while(moneteRaccolteP <= 0 || moneteRaccolteP >= 4);
 			
-			monete -= moneteRaccolteP;
-			moneteRaccolteM = rand()%3 + 1;
-			monete -= moneteRaccolteM;
-			
-			cout << "Il computere ha preso " << moneteRaccolteM << " monete. Rimagono " << monete << " monete" << endl;
+				monete -= moneteRaccolteP;
+				moneteRaccolteM = rand()%3 + 1;
+				monete -= moneteRaccolteM;
+				
+				cout << "Il computere ha preso " << moneteRaccolteM << " monete. Rimagono " << monete << " monete" << endl;
 			
 			}
 			
@@ -265,22 +266,41 @@ void difficile() //inizio della difficoltà difficile
 				}
 							
 			}
-			
-			
-			
-		}
-		
-		
-		
-		
-		
-		
-	}		
 	
+		}
+		else 
+		{
 		
+				do 
+				{
+					cout << "Quante monete vuoi raccogliere? (da 1 a 3)";
+					cin >> moneteRaccolteP;
+					if (moneteRaccolteP <= 0 || moneteRaccolteP >= 4) 
+					{
+						cout << "Ti ho detto di scegliere tra 1 e 3!\n";
+					}
+				}
+				
+				while(moneteRaccolteP <= 0 || moneteRaccolteP >= 4);
+			
+				monete -= moneteRaccolteP;
+				moneteRaccolteM = rand()%3 + 1;
+				monete -= moneteRaccolteM;
+				cout << "Il computer ha preso " << moneteRaccolteM << " monete. Rimangono " << monete << " monete" << endl;
+			
+				if(monete < 0)
+				{
+					cout << "Il computer ha preso l'ultima moneta, e dunque hai vinto!" << endl;
+				}
+				else if(monete == 0)
+				{
+					cout << "Hai preso l'ultima moneta. Hai perso!" << endl;
+				}
+		}		
+		
+	}	
+
 }
-
-
 
 
 

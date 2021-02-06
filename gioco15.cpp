@@ -31,15 +31,21 @@ void inizioMacchinaCasuale()
 		while(moneteRaccolteP <= 0 || moneteRaccolteP >= 4);
 		
 		monete -= moneteRaccolteP;
+		
+		if(monete <= 0)
+		{
+			cout << "Le monete sono finite.";
+		}
+		
 	}
 	
 }
-
 
 void inizioMacchinaDeterminato()
 {
 	int monete = 11;
 	int moneteRaccolteM, moneteRaccolteP;
+	srand(time(NULL));
 	
 	while(monete > 0)
 	{
@@ -59,6 +65,7 @@ void inizioMacchinaDeterminato()
 			}
 		}
 		while(moneteRaccolteP <= 0 || moneteRaccolteP >= 4);
+		
 		
 		switch(moneteRaccolteP)
 		{
@@ -80,21 +87,25 @@ void inizioMacchinaDeterminato()
 				cout << "Il computer ha raccolto " << moneteRaccolteM << " monete. Rimangono " << monete << " monete" << endl;
 				break;		
 		
-				
-	
 		}
+		
+		if(monete <= 0)
+		{
+			cout << "Le monete sono finite.";
+		}
+		
 	}	
 
 }
-
 
 void inizioGiocatoreCasuale()
 {
 	int monete = 11;
 	int moneteRaccolteP, moneteRaccolteM;
+	srand(time(NULL));
+	
 	while (monete > 0)
 	{
-		srand(time(NULL));
 		
 		do
 		{
@@ -114,10 +125,13 @@ void inizioGiocatoreCasuale()
 		monete -= moneteRaccolteM;
 		
 		cout << "Il computer ha raccolto " << moneteRaccolteM << " monete. Rimangono " << monete << " monete" << endl;
+		
+		if(monete <= 0)
+		{
+			cout << "Le monete sono finite.";
+		}
 	}
 }
-
-
 
 void inizioGiocatoreDeterminato()
 {
@@ -126,7 +140,6 @@ void inizioGiocatoreDeterminato()
 	
 	while(monete > 0)
 	{
-	
 		do
 		{
 			cout << "Quante monete vuoi prendere? (1 a 3) " << endl;
@@ -162,18 +175,13 @@ void inizioGiocatoreDeterminato()
 				cout << "Il computer ha raccolto " << moneteRaccolteM << " monete. Rimangono " << monete << " monete" << endl;
 				break;		
 		}
+		
+		if(monete <= 0)
+		{
+			cout << "Le monete sono finite.";
+		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
 
 void facile() //inizio della difficoltà facile
 {
@@ -239,7 +247,6 @@ void medio() //inizio della difficoltà media
 	}
 }
 
-
 void difficile() //inizio della difficoltà difficile
 {
 	int probInizio, probSconf;
@@ -271,7 +278,6 @@ void difficile() //inizio della difficoltà difficile
 		}
 	}
 }
-
 
 int main()   //inizio della struttura principale del programma
 {

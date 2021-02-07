@@ -7,12 +7,12 @@ int controlloInput(int input)
 {
 	do
 	{
-		printf("Quante monete vuoi prendere? (da 1 a 3) ");
+		printf("Quante monete vuoi prendere? (da 1 a 3) \n");
 		scanf("%d", &input);
 		
 		if(input <= 0 || input >= 4)
 		{
-			printf("Ti ho detto di inserire un numero da 1 a 3!");
+			printf("Ti ho detto di inserire un numero da 1 a 3! \n");
 		}
 	}
 	while(input <= 0 || input >= 4);
@@ -30,11 +30,11 @@ void inizioMacchinaCasuale(int monete, int mrp, int mrm)
 		mrm = rand()%3 + 1;
 		monete -= mrm;
 		
-		printf("Il computer ha preso %d monete. Rimangono %d monete", moneteRaccolteM, monete);
+		printf("Il computer ha preso %d monete. Rimangono %d monete \n", mrm, monete);
 	
 		controlloInput(mrp);
 		
-		monete -= moneteRaccolteP;
+		monete -= mrp;
 	
 	}
 	
@@ -46,10 +46,10 @@ void inizioMacchinaDeterminato(int monete, int mrp, int mrm)
 	
 	while(monete > 0)
 	{
-		moneteRaccolteM = rand()%3 + 1;
-		monete -= moneteRaccolteM;
+		mrm = rand()%3 + 1;
+		monete -= mrm;
 		
-		printf("Il computer ha preso %d monete. Rimangono %d monete", moneteRaccolteM, monete);
+		printf("Il computer ha preso %d monete. Rimangono %d monete \n", mrm, monete);
 		
 		controlloInput(mrp);
 		
@@ -138,8 +138,11 @@ void inizioGiocatoreDeterminato(int monete, int mrp, int mrm)
 void facile() //inizio della difficoltà facile
 {
 	int probInizio, probSconf;
+	int monete = 11;
+	int moneteRaccolteP, moneteRaccolteM;
 	srand(time(NULL));
 	
+	moneteRaccolteP = moneteRaccolteM = 0;
 	probInizio = rand()%10 + 1; 
 	probSconf = rand()%100 + 1; 
 	
@@ -147,22 +150,22 @@ void facile() //inizio della difficoltà facile
 	{
 		if(probSconf >= 90)
 		{
-			inizioGiocatoreDeterminato();
+			inizioGiocatoreDeterminato(monete, moneteRaccolteP, moneteRaccolteM);
 		}
 		else
 		{
-			inizioGiocatoreCasuale();
+			inizioGiocatoreCasuale(monete, moneteRaccolteP, moneteRaccolteM);
 		}
 	}
 	else
 	{
 		if(probSconf >= 90)
 		{
-			inizioMacchinaDeterminato();
+			inizioMacchinaDeterminato(monete, moneteRaccolteP, moneteRaccolteM);
 		}
 		else
 		{
-			inizioMacchinaCasuale();
+			inizioMacchinaCasuale(monete, moneteRaccolteP, moneteRaccolteM);
 		}
 	}
 }
@@ -170,6 +173,8 @@ void facile() //inizio della difficoltà facile
 void medio() //inizio della difficoltà media
 {
 	int probInizio, probSconf;
+	int monete = 11;
+	int moneteRaccolteP, moneteRaccolteM;
 	srand(time(NULL));
 	
 	probInizio = rand()%10 + 1; 
@@ -179,22 +184,22 @@ void medio() //inizio della difficoltà media
 	{
 		if(probSconf >= 60)
 		{
-			inizioGiocatoreDeterminato();
+			inizioGiocatoreDeterminato(monete, moneteRaccolteP, moneteRaccolteM);
 		}
 		else
 		{
-			inizioGiocatoreCasuale();
+			inizioGiocatoreCasuale(monete, moneteRaccolteP, moneteRaccolteM);
 		}
 	}
 	else
 	{
 		if(probSconf >= 60)
 		{
-			inizioMacchinaDeterminato();
+			inizioMacchinaDeterminato(monete, moneteRaccolteP, moneteRaccolteM);
 		}
 		else
 		{
-			inizioMacchinaCasuale();
+			inizioMacchinaCasuale(monete, moneteRaccolteP, moneteRaccolteM);
 		}
 	}
 }
@@ -202,6 +207,8 @@ void medio() //inizio della difficoltà media
 void difficile() //inizio della difficoltà difficile
 {
 	int probInizio, probSconf;
+	int monete = 11;
+	int moneteRaccolteP, moneteRaccolteM;
 	srand(time(NULL));
 	
 	probInizio = rand()%10 + 1; 
@@ -211,22 +218,22 @@ void difficile() //inizio della difficoltà difficile
 	{
 		if(probSconf >= 10)
 		{
-			inizioGiocatoreDeterminato();
+			inizioGiocatoreDeterminato(monete, moneteRaccolteP, moneteRaccolteM);
 		}
 		else
 		{
-			inizioGiocatoreCasuale();
+			inizioGiocatoreCasuale(monete, moneteRaccolteP, moneteRaccolteM);
 		}
 	}
 	else
 	{
 		if(probSconf >= 10)
 		{
-			inizioMacchinaDeterminato();
+			inizioMacchinaDeterminato(monete, moneteRaccolteP, moneteRaccolteM);
 		}
 		else
 		{
-			inizioMacchinaCasuale();
+			inizioMacchinaCasuale(monete, moneteRaccolteP, moneteRaccolteM);
 		}
 	}
 }
@@ -235,9 +242,9 @@ int main()   //inizio della struttura principale del programma
 {
 	char diff; 
 	
-	cout << "Ciao! Seleziona la difficolta': " << endl;
-	cout << "F = facile, M = medio, D = difficile" << endl;
-	cin >> diff;
+	printf("Ciao! Seleziona una difficolta': \n");
+	printf("F = facile, M = medio, D = difficile. \n");
+	scanf("%c", &diff);
 	
 	switch(diff) //scelta difficoltà
 	{
@@ -251,7 +258,7 @@ int main()   //inizio della struttura principale del programma
 			difficile();
 			break;
 		default:
-			cout << "Inserisci una difficoltà valida!";
+			printf("Inserisci una difficoltà valida!");
 			main();
 			break;	
 	}

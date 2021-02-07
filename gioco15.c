@@ -51,8 +51,9 @@ void inizioMacchinaDeterminato(int monete, int mrp, int mrm)
 		
 		printf("Il computer ha preso %d monete. Rimangono %d monete \n", mrm, monete);
 		
-		controlloInput(mrp);
 		
+		controlloInput(mrp);
+		monete -= mrp;
 		switch(mrp)
 		{
 			case 1:
@@ -258,8 +259,17 @@ int main()   //inizio della struttura principale del programma
 			difficile();
 			break;
 		default:
-			printf("Inserisci una difficoltà valida!");
-			main();
+			do
+			{
+				printf("Ciao! Seleziona una difficolta': \n");
+				printf("F = facile, M = medio, D = difficile. \n");
+				scanf("%c", &diff);
+				if(diff != 'f' || diff != 'm' || diff != 'd')
+				{
+					printf("Inserisci una difficolta' esistente!\n");
+				}
+			}
+			while(diff != 'f' || diff != 'm' || diff != 'd');
 			break;	
 	}
 }
